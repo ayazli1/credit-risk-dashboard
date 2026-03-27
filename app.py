@@ -140,7 +140,7 @@ WEIGHTS = {
 
 def score_var(key, v):
     if key == "annualIncome":
-        return 100 if v>=150000 else 85 if v>=100000 else 65 if v>=60000 else 45 if v>=35000 else 20
+        return 100 if v>=2000000 else 85 if v>=1200000 else 65 if v>=600000 else 45 if v>=300000 else 20
     if key == "debtToIncome":
         return 100 if v<=0.10 else 85 if v<=0.20 else 60 if v<=0.35 else 35 if v<=0.50 else 10
     if key == "creditScore":
@@ -187,14 +187,14 @@ def fmt_inr(n):
 # ─── PORTFOLIO DATA ────────────────────────────────────────────────────────────
 
 PORTFOLIO = [
-    {"name":"Arjun Mehta",   "annualIncome":120000,"debtToIncome":0.18,"creditScore":780,"employmentYears":8, "collateralRatio":1.4,"loanAmount":500000},
-    {"name":"Priya Sharma",  "annualIncome":55000, "debtToIncome":0.42,"creditScore":620,"employmentYears":3, "collateralRatio":0.8,"loanAmount":200000},
-    {"name":"Rohan Kapoor",  "annualIncome":95000, "debtToIncome":0.25,"creditScore":710,"employmentYears":6, "collateralRatio":1.1,"loanAmount":350000},
-    {"name":"Sneha Patel",   "annualIncome":38000, "debtToIncome":0.55,"creditScore":560,"employmentYears":1, "collateralRatio":0.5,"loanAmount":150000},
-    {"name":"Vikram Singh",  "annualIncome":200000,"debtToIncome":0.12,"creditScore":840,"employmentYears":15,"collateralRatio":1.8,"loanAmount":800000},
-    {"name":"Kavya Nair",    "annualIncome":72000, "debtToIncome":0.31,"creditScore":695,"employmentYears":4, "collateralRatio":1.0,"loanAmount":280000},
-    {"name":"Amit Joshi",    "annualIncome":45000, "debtToIncome":0.48,"creditScore":590,"employmentYears":2, "collateralRatio":0.65,"loanAmount":180000},
-    {"name":"Divya Reddy",   "annualIncome":160000,"debtToIncome":0.15,"creditScore":820,"employmentYears":12,"collateralRatio":1.6,"loanAmount":650000},
+    {"name":"Arjun Mehta",   "annualIncome":1200000,"debtToIncome":0.18,"creditScore":780,"employmentYears":8, "collateralRatio":1.4,"loanAmount":5000000},
+    {"name":"Priya Sharma",  "annualIncome":550000, "debtToIncome":0.42,"creditScore":620,"employmentYears":3, "collateralRatio":0.8,"loanAmount":2000000},
+    {"name":"Rohan Kapoor",  "annualIncome":950000, "debtToIncome":0.25,"creditScore":710,"employmentYears":6, "collateralRatio":1.1,"loanAmount":3500000},
+    {"name":"Sneha Patel",   "annualIncome":380000, "debtToIncome":0.55,"creditScore":560,"employmentYears":1, "collateralRatio":0.5,"loanAmount":1500000},
+    {"name":"Vikram Singh",  "annualIncome":2000000,"debtToIncome":0.12,"creditScore":840,"employmentYears":15,"collateralRatio":1.8,"loanAmount":8000000},
+    {"name":"Kavya Nair",    "annualIncome":720000, "debtToIncome":0.31,"creditScore":695,"employmentYears":4, "collateralRatio":1.0,"loanAmount":2800000},
+    {"name":"Amit Joshi",    "annualIncome":450000, "debtToIncome":0.48,"creditScore":590,"employmentYears":2, "collateralRatio":0.65,"loanAmount":1800000},
+    {"name":"Divya Reddy",   "annualIncome":1600000,"debtToIncome":0.15,"creditScore":820,"employmentYears":12,"collateralRatio":1.6,"loanAmount":6500000},
 ]
 
 # ─── HEADER ───────────────────────────────────────────────────────────────────
@@ -236,12 +236,12 @@ with tab_scorer:
     name = sidebar.text_input("Applicant Name", value="New Applicant")
     sidebar.markdown("---")
 
-    annual_income     = sidebar.slider("Annual Income (₹)",      10000,  300000, 85000,  5000)
+    annual_income     = sidebar.slider("Annual Income (₹)",      100000,  10000000, 600000,  50000)
     debt_to_income    = sidebar.slider("Debt-to-Income Ratio",   0.05,   0.80,   0.28,   0.01, format="%.2f")
     credit_score      = sidebar.slider("Credit Score (CIBIL)",   300,    900,    710,    5)
     employment_years  = sidebar.slider("Employment Tenure (yrs)",0,      30,     5,      1)
     collateral_ratio  = sidebar.slider("Collateral Ratio (x)",   0.20,   2.50,   1.10,   0.05, format="%.2f")
-    loan_amount       = sidebar.slider("Loan Amount / EAD (₹)",  50000,  2000000,300000, 10000)
+    loan_amount       = sidebar.slider("Loan Amount / EAD (₹)",  100000, 50000000, 2000000, 100000)
 
     sidebar.markdown("---")
     gen_commentary = sidebar.button("⚡ Generate AI Commentary")
